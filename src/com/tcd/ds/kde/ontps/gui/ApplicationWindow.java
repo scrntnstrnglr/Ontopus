@@ -83,6 +83,7 @@ public class ApplicationWindow {
 	private JTextField textFieldExecTime;
 	private JTextField textFieldCols;
 	private JTextField textFieldRows;
+	private int numberOfRows;
 
 	/**
 	 * Create the application.
@@ -107,7 +108,7 @@ public class ApplicationWindow {
 	private void initialize() throws IOException, FontFormatException {
 		lines = new JTextArea("1");
 		lines.setBackground(Color.LIGHT_GRAY);
-	    lines.setEditable(false);
+		lines.setEditable(false);
 		query1 = new Queries();
 		frame = new JFrame();
 		frame.setTitle("Ontopus");
@@ -121,12 +122,12 @@ public class ApplicationWindow {
 		// frame.setBounds(0,0,screenSize.width, screenSize.height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+		frame.setResizable(false);
+
 		InputStream is = new FileInputStream(new File(resourceDirectory + "\\fonts\\font2.otf"));
 		Font font = Font.createFont(Font.TRUETYPE_FONT, is);
 		is = new FileInputStream(new File(resourceDirectory + "\\fonts\\font3.otf"));
 		Font fontLogo = Font.createFont(Font.TRUETYPE_FONT, is);
-		
 
 		final JLabel imageLabel = new JLabel(new ImageIcon(iconlarge.getImage()));
 		imageLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
@@ -152,25 +153,27 @@ public class ApplicationWindow {
 		editorPane_1.setEditable(false);
 		editorPane_1.setCaretColor(Color.WHITE);
 		editorPane_1.getCaret().setVisible(true);
-		editorPane_1.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+		editorPane_1.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		frame.getContentPane().add(editorPane_1);
 
 		PrintStream stream = new PrintStream(System.out) {
 			@Override
 			public void print(String s) {
-				SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
 				Date date = new Date(System.currentTimeMillis());
-				ApplicationWindow.this.editorPane_1.append(formatter.format(date)+" "+this.getClass().getName()+" "+s+"\n");
+				ApplicationWindow.this.editorPane_1
+						.append(formatter.format(date) + " " + this.getClass().getName() + " " + s + "\n");
 			}
 		};
 		System.setOut(stream);
 
 		/*
-		System.out.println("Configuring properties...");
-		Properties loggingProperties = new Properties();
-		loggingProperties.load(new FileInputStream(resourceDirectory + "\\log4j.properties"));
-
-		PropertyConfigurator.configure(loggingProperties); */
+		 * System.out.println("Configuring properties..."); Properties loggingProperties
+		 * = new Properties(); loggingProperties.load(new
+		 * FileInputStream(resourceDirectory + "\\log4j.properties"));
+		 * 
+		 * PropertyConfigurator.configure(loggingProperties);
+		 */
 		System.out.print("INFO Application Launched...");
 
 		JScrollPane scrollPaneLog = new JScrollPane(editorPane_1);
@@ -194,33 +197,36 @@ public class ApplicationWindow {
 		scrollPane_1.setBounds(71, 53, 1026, 242);
 		panel.add(scrollPane_1);
 
-	    JTextArea editorPane = new JTextArea();
-	    lines = new JTextArea("1");
-	    lines.setBackground(Color.LIGHT_GRAY);
-	    lines.setEditable(false);
-	    editorPane.getDocument().addDocumentListener(new DocumentListener() {
-	          public String getText() {
-	             int caretPosition = editorPane.getDocument().getLength();
-	             Element root = editorPane.getDocument().getDefaultRootElement();
-	             String text = "1" + System.getProperty("line.separator");
-	                for(int i = 2; i < root.getElementIndex(caretPosition) + 2; i++) {
-	                   text += i + System.getProperty("line.separator");
-	                }
-	             return text;
-	          }
-	          @Override
-	          public void changedUpdate(DocumentEvent de) {
-	             lines.setText(getText());
-	          }
-	          @Override
-	          public void insertUpdate(DocumentEvent de) {
-	             lines.setText(getText());
-	          }
-	          @Override
-	          public void removeUpdate(DocumentEvent de) {
-	             lines.setText(getText());
-	          }
-	       });
+		JTextArea editorPane = new JTextArea();
+		lines = new JTextArea("1");
+		lines.setBackground(Color.LIGHT_GRAY);
+		lines.setEditable(false);
+		editorPane.getDocument().addDocumentListener(new DocumentListener() {
+			public String getText() {
+				int caretPosition = editorPane.getDocument().getLength();
+				Element root = editorPane.getDocument().getDefaultRootElement();
+				String text = "1" + System.getProperty("line.separator");
+				for (int i = 2; i < root.getElementIndex(caretPosition) + 2; i++) {
+					text += i + System.getProperty("line.separator");
+				}
+				return text;
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent de) {
+				lines.setText(getText());
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent de) {
+				lines.setText(getText());
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent de) {
+				lines.setText(getText());
+			}
+		});
 		editorPane.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent arg0) {
@@ -235,7 +241,7 @@ public class ApplicationWindow {
 		editorPane.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
 		editorPane.setFont(font.deriveFont(17f));
 		scrollPane_1.setViewportView(editorPane);
-		lines.setBorder(BorderFactory.createEmptyBorder(1,3,1,3));
+		lines.setBorder(BorderFactory.createEmptyBorder(1, 3, 1, 3));
 		editorPane.setBorder(BorderFactory.createEmptyBorder(1, 3, 1, 3));
 		makeUndoRedo(editorPane);
 		scrollPane_1.setRowHeaderView(lines);
@@ -257,7 +263,7 @@ public class ApplicationWindow {
 		 */
 
 		JButton btnImportModel = createButton("Import", "import.png", -12, 53, 86, 32, panel);
-		JButton btnCreateModel = createButton("Create Dummy Model", "create.png", -12, 97, 86, 32, panel);
+		JButton btnCreateModel = createButton("Save query", "create.png", -12, 97, 86, 32, panel);
 		JButton btnExecute = createButton("Execute", "run.png", -12, 136, 86, 32, panel);
 		JButton btnExport = createButton("Export", "export.png", -12, 170, 86, 32, panel);
 		JButton btnNewButton = createButton("Clear", "clear.png", -12, 216, 86, 32, panel);
@@ -335,27 +341,50 @@ public class ApplicationWindow {
 						double elapsed = elapsedTime / 1000.0;
 
 						System.out.print("INFO Execution complete...");
-						System.out.print("INFO Columns: " + cols.size() + "\tRows: " + queryOutput.size()
-								+ "\tExecution Time: " + " " + df.format(elapsed) + " ms");
+						numberOfRows = queryOutput.size() - 1;
+						if (numberOfRows == 0)
+							JOptionPane.showMessageDialog(frame, "No rows returned");
+						System.out.print("INFO Columns: " + cols.size() + " Rows: " + numberOfRows + " Execution Time: "
+								+ " " + df.format(elapsed) + " ms");
 						textFieldExecTime.setText(df.format(elapsed) + " ms");
-						textFieldCols.setText(cols.size()+"");
-						textFieldRows.setText(queryOutput.size()+"");
+						textFieldCols.setText(cols.size() + "");
+						textFieldRows.setText(numberOfRows + "");
 					}
 				}
 			}
 		});
 		btnCreateModel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (ont != null) {
-					int opt = JOptionPane.showConfirmDialog(frame, "Ontology already attached. Create new?");
+				/**********
+				 * Model Creator********* if (ont != null) { int opt =
+				 * JOptionPane.showConfirmDialog(frame, "Ontology already attached. Create
+				 * new?"); } // writeToConsole("\n>Creating model...", editorPane_1);
+				 * System.out.print("INFO Creating model..."); ont = modelCreator.createModel();
+				 * // writeToConsole("\n>Model created and attached...", editorPane_1);
+				 * System.out.print("INFO Model created and attached...");
+				 * editorPane.setText(query1.basicQuery1);
+				 */
+
+				// changed to save written file to text.
+				String fileName = choice.getSelectedItem();
+				System.out.println(fileName);
+				String linesToWrite = editorPane.getText().toString();
+				if (linesToWrite.isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "No text to save!!");
+				} else {
+					try {
+						if (JOptionPane.showConfirmDialog(null, fileName + " will be overwritten. Are you sure?",
+								"WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+							if (fileManager.writeToFile(fileName, linesToWrite))
+								System.out.println("File Saved to - " + fileName);
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						System.out.println(e1.getMessage());
+					}
 				}
-				// writeToConsole("\n>Creating model...", editorPane_1);
-				System.out.print("INFO Creating model...");
-				ont = modelCreator.createModel();
-				// writeToConsole("\n>Model created and attached...", editorPane_1);
-				System.out.print("INFO Model created and attached...");
-				editorPane.setText(query1.basicQuery1);
 			}
+
 		});
 		btnImportModel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -426,7 +455,7 @@ public class ApplicationWindow {
 				"Results"));
 		scrollPaneTab.setVisible(false);
 		frame.getContentPane().add(scrollPaneTab);
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(843, 679, 284, 277);
 		panel_1.setBorder(BorderFactory.createTitledBorder(
@@ -435,11 +464,11 @@ public class ApplicationWindow {
 				"Data"));
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
-		
+
 		JLabel lblFileImported = new JLabel("File Imported:");
 		lblFileImported.setBounds(15, 26, 79, 20);
 		panel_1.add(lblFileImported);
-		
+
 		textFieldFileImported = new JTextField();
 		textFieldFileImported.setEditable(false);
 		textFieldFileImported.setBounds(15, 48, 254, 26);
@@ -447,31 +476,31 @@ public class ApplicationWindow {
 		textFieldFileImported.setColumns(10);
 		textFieldFileImported.getCaret().setVisible(true);
 		textFieldFileImported.setCaretColor(Color.BLACK);
-		
+
 		JLabel lblQueryExecutionTime = new JLabel("Query Execution Time:");
 		lblQueryExecutionTime.setBounds(15, 85, 157, 20);
 		panel_1.add(lblQueryExecutionTime);
-		
+
 		textFieldExecTime = new JTextField();
 		textFieldExecTime.setEditable(false);
 		textFieldExecTime.setColumns(10);
 		textFieldExecTime.setBounds(15, 107, 254, 26);
 		panel_1.add(textFieldExecTime);
-		
+
 		JLabel lblColumns_1 = new JLabel("Columns:");
 		lblColumns_1.setBounds(15, 149, 157, 20);
 		panel_1.add(lblColumns_1);
-		
+
 		textFieldCols = new JTextField();
 		textFieldCols.setEditable(false);
 		textFieldCols.setColumns(10);
 		textFieldCols.setBounds(15, 172, 254, 26);
 		panel_1.add(textFieldCols);
-		
+
 		JLabel lblRows_1 = new JLabel("Rows:");
 		lblRows_1.setBounds(15, 214, 157, 20);
 		panel_1.add(lblRows_1);
-		
+
 		textFieldRows = new JTextField();
 		textFieldRows.setEditable(false);
 		textFieldRows.setColumns(10);
@@ -479,7 +508,7 @@ public class ApplicationWindow {
 		panel_1.add(textFieldRows);
 
 	}
-	
+
 	public void makeUndoRedo(JTextArea editorPane) {
 		UndoManager undoManager;
 		undoManager = new UndoManager();
@@ -488,43 +517,43 @@ public class ApplicationWindow {
 			@Override
 			public void undoableEditHappened(UndoableEditEvent arg0) {
 				// TODO Auto-generated method stub
-		        undoManager.addEdit(arg0.getEdit());
+				undoManager.addEdit(arg0.getEdit());
 			}
 		});
-		
+
 		InputMap im = editorPane.getInputMap(JComponent.WHEN_FOCUSED);
 		ActionMap am = editorPane.getActionMap();
 
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), "Undo");
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_Y, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), "Redo");
 
-		am.put("Undo", new AbstractAction() {			
+		am.put("Undo", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-		            if (undoManager.canUndo()) {
-		                undoManager.undo();
-		            }
-		        } catch (CannotUndoException exp) {
-		            exp.printStackTrace();
-		        }
-		   
+					if (undoManager.canUndo()) {
+						undoManager.undo();
+					}
+				} catch (CannotUndoException exp) {
+					exp.printStackTrace();
+				}
+
 			}
 		});
-		
-		am.put("Redo", new AbstractAction() {			
+
+		am.put("Redo", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-		            if (undoManager.canRedo()) {
-		                undoManager.redo();
-		            }
-		        } catch (CannotUndoException exp) {
-		            exp.printStackTrace();
-		        }
-		    }
+					if (undoManager.canRedo()) {
+						undoManager.redo();
+					}
+				} catch (CannotUndoException exp) {
+					exp.printStackTrace();
+				}
+			}
 		});
 	}
 

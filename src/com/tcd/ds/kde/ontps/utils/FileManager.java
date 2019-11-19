@@ -1,6 +1,8 @@
 package com.tcd.ds.kde.ontps.utils;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -40,9 +42,22 @@ public class FileManager {
 		return "";
 	}
 	
+	public boolean writeToFile(String fileName, String lines) throws IOException {
+	    try {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(queryDirectory+"\\"+fileName));
+	    writer.write(lines);
+	    writer.close();
+		return true;
+	    }catch(Exception e) {
+	    	System.out.println(e.getMessage().toString());
+	    	return false;
+	    }
+
+	}
+	
 	public static void main(String args[]) throws IOException {
 		FileManager fm = new FileManager("resource\\queries");
-		System.out.println(fm.getFileContents("query1"));
+		System.out.println(fm.writeToFile("query3","sdasdasdasd\nsqseqw33434"));
 	}
 
 }
