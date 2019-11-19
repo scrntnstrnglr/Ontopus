@@ -1,0 +1,16 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+SELECT ?candFirstName ?candSurName ?constName ?result ?totalPoll ?totalVotes WHERE {
+?cand <https://www.electionsireland.org/2016/candidate/constID> ?constIDURI .
+?constIDURI <https://www.electionsireland.org/2016/constituency/hasName> ?constName .
+?cand <https://www.electionsireland.org/2016/candidate/isPerson> ?personURI .
+?personURI <http://xmlns.com/foaf/0.1/firstname> ?candFirstName .
+?personURI <http://xmlns.com/foaf/0.1/surname> ?candSurName .
+?cand <https://www.electionsireland.org/2016/candidate/hasFinalResult> ?resultURI .
+?resultURI <https://www.electionsireland.org/2016/candidate/hasFinalResult> ?result .
+?constIDURI <https://www.electionsireland.org/2016/constituency/hasElectorate> ?electURI .
+?electURI <https://www.electionsireland.org/2016/constituency/totalPoll> ?totalPoll .
+?cand <https://www.electionsireland.org/2016/candidate/hasCountDetails> ?countURI .
+?countURI <https://www.electionsireland.org/2016/countdetails/hasVotes> ?voteURI .
+?voteURI <https://www.electionsireland.org/2016/countdetails/hasIterationTotalVote> ?totalVotes .
+}

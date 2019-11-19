@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project Jena">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/.."/>
+    <property name="dir.jarfile" value="${dir.buildfile}/target"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/ONTPS.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="com.tcd.ds.kde.ontps.Launcher"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${dir.buildfile}/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/collection-0.7.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/commons-cli-1.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/commons-codec-1.13.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/commons-compress-1.19.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/commons-csv-1.7.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/commons-io-2.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/commons-lang3-3.9.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/httpclient-4.5.10.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/httpclient-cache-4.5.10.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/httpcore-4.4.12.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jackson-annotations-2.9.10.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jackson-core-2.9.10.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jackson-databind-2.9.10.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jcl-over-slf4j-1.7.26.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-arq-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-base-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-cmds-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-core-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-dboe-base-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-dboe-index-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-dboe-storage-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-dboe-transaction-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-dboe-trans-data-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-iri-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-rdfconnection-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-shacl-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-shaded-guava-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-tdb2-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jena-tdb-3.13.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/jsonld-java-0.12.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/apache-jena-3.13.1/lib/libthrift-0.12.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-1.0.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/api-1.0.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-base-11.0.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-base-11.0.2-linux.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-controls-11.0.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-controls-11.0.2-linux.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-graphics-11.0.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-graphics-11.0.2-linux.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-media-11.0.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-media-11.0.2-linux.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-web-11.0.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/javafx-web-11.0.2-linux.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/oauth-1.0.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/openid-1.0.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/log4j-1.2.17.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/slf4j-api-1.7.27.jar"/>
+        </jar>
+    </target>
+</project>

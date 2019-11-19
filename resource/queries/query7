@@ -1,0 +1,7 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+SELECT ?x ?y ?p WHERE {
+?x <http://www.example.org/candidateconst/constID> ?z .
+?z  <http://xmlns.com/foaf/0.1/hasName> ?y .
+?x <http://www.example.org/candidateconst/belongsToParty> ?p
+}

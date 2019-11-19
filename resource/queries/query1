@@ -1,0 +1,10 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+PREFIX can: <http://www.example.org/candidateconst/>
+PREFIX con: <https://electionsireland.org/results/const/>
+PREFIX cr: <https://electionsireland.org/results/general/candidacyresult/>
+SELECT ?x ?w WHERE {
+?x <http://xmlns.com/foaf/0.1/firstname> "John" .
+?x <http://www.example.org/candidateconst/constID> ?w 
+?w <http://xmlns.com/foaf/0.1/hasName> ?
+}
