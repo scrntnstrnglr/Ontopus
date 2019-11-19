@@ -3,6 +3,7 @@ package com.tcd.ds.kde.ontps.gui;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JFileChooser;
@@ -17,15 +18,21 @@ import com.tcd.ds.kde.ontps.model.Queries;
 import com.tcd.ds.kde.ontps.model.QueryModel;
 import com.tcd.ds.kde.ontps.utils.FileManager;
 
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -45,12 +52,18 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.Element;
+import javax.swing.undo.CannotUndoException;
+import javax.swing.undo.UndoManager;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.UndoableEditEvent;
+import javax.swing.event.UndoableEditListener;
+
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
@@ -224,6 +237,7 @@ public class ApplicationWindow {
 		scrollPane_1.setViewportView(editorPane);
 		lines.setBorder(BorderFactory.createEmptyBorder(1,3,1,3));
 		editorPane.setBorder(BorderFactory.createEmptyBorder(1, 3, 1, 3));
+		makeUndoRedo(editorPane);
 		scrollPane_1.setRowHeaderView(lines);
 		// writeToConsole("##################Welcome To OntoPuss#################\n",
 		// editorPane_1);
@@ -405,7 +419,7 @@ public class ApplicationWindow {
 		lblExecutionTime.setVisible(false);
 
 		scrollPaneTab = new JScrollPane();
-		scrollPaneTab.setBounds(15, 329, 1112, 320);
+		scrollPaneTab.setBounds(15, 329, 1112, 340);
 		scrollPaneTab.setBorder(BorderFactory.createTitledBorder(
 				BorderFactory.createCompoundBorder(new MatteBorder(0, 5, 0, 0, Color.decode("#7FC503")),
 						new MatteBorder(1, 0, 1, 1, Color.BLACK)),
@@ -464,6 +478,54 @@ public class ApplicationWindow {
 		textFieldRows.setBounds(15, 235, 254, 26);
 		panel_1.add(textFieldRows);
 
+	}
+	
+	public void makeUndoRedo(JTextArea editorPane) {
+		UndoManager undoManager;
+		undoManager = new UndoManager();
+		Document doc = editorPane.getDocument();
+		doc.addUndoableEditListener(new UndoableEditListener() {
+			@Override
+			public void undoableEditHappened(UndoableEditEvent arg0) {
+				// TODO Auto-generated method stub
+		        undoManager.addEdit(arg0.getEdit());
+			}
+		});
+		
+		InputMap im = editorPane.getInputMap(JComponent.WHEN_FOCUSED);
+		ActionMap am = editorPane.getActionMap();
+
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), "Undo");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_Y, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), "Redo");
+
+		am.put("Undo", new AbstractAction() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+		            if (undoManager.canUndo()) {
+		                undoManager.undo();
+		            }
+		        } catch (CannotUndoException exp) {
+		            exp.printStackTrace();
+		        }
+		   
+			}
+		});
+		
+		am.put("Redo", new AbstractAction() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+		            if (undoManager.canRedo()) {
+		                undoManager.redo();
+		            }
+		        } catch (CannotUndoException exp) {
+		            exp.printStackTrace();
+		        }
+		    }
+		});
 	}
 
 	public void writeToConsole(String s, JTextArea pane) {
