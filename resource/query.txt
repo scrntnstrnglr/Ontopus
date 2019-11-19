@@ -1,0 +1,158 @@
+	1. Which constituency max. number of females got elected?
+
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX cand: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	SELECT ?conName (count(distinct ?person) as ?count) WHERE {
+		?person foaf:gender ?gender .
+		?candidateId cand:isPerson ?person .
+		?candidateId cand:constID ?constituencyId .
+		?constituencyId con:hasName ?conName .
+		?candidateId cand:hasResults ?res .
+		?res cand:hasFinalResult ?r
+		FILTER(?gender = 'F') .
+		FILTER(?r = 'Elected') .
+	}
+	GROUP BY ?conName ORDER BY DESC(?count) LIMIT 1
+
+
+	2. Name the parties who won from Dublin (all constituencies in Dublin).
+
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	SELECT ?name WHERE {
+		?candidate can:hasResults ?result .
+		?candidate can:constID ?const .
+		?const con:hasName ?conName .
+		?result  can:hasFinalResult ?finalResult .
+		?candidate can:belongsToParty ?party .
+		?party can:hasName ?name  .
+		FILTER(?finalResult = 'Elected') .
+		FILTER regex(?conName, "^Dublin") .
+	} GROUP BY ?name
+	
+	
+	3. Count the no. of males  who got elected from Cork.
+	
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	SELECT ?conName (count(distinct ?candidate) as ?count) WHERE {
+		?candidate foaf:gender ?gender .
+		?candidateId can:isPerson ?candidate .
+		?candidateId can:constID ?constituencyId .
+		?constituencyId con:hasName ?conName .
+		?candidateId can:hasResults ?result .
+		?result can:hasFinalResult ?finalResult .
+		FILTER(?gender = 'M') .
+		FILTER regex(?conName, "^Cork") .
+		FILTER(?finalResult = 'Elected') .
+	} GROUP BY ?conName
+	
+	
+	4. List the candidates in a constituency having min. no. of candidates.
+	
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	SELECT ?fn ?ln WHERE {
+		?cand can:constID ?constituencyId .
+		?cand can:isPerson ?person .
+		?person foaf:firstname ?fn .
+		?person foaf:surname ?ln .
+		 {
+			SELECT ?constituencyId (count(distinct ?candidate) as ?count) WHERE 
+			{
+				?candidate foaf:gender ?gender .
+				?candidateId can:isPerson ?candidate .
+				?candidateId can:constID ?constituencyId .
+			} GROUP BY ?constituencyId ORDER BY ?count LIMIT 1
+		}
+	}
+	
+	5. Find the candidates who lost there deposits in Louth.
+	
+	6. Find the no of candidates who got excluded after the 5th round of count.
+	
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
+	SELECT  (count(distinct ?candidate) as ?count)  WHERE {
+		?candidate can:isPerson ?person .
+		?candidate can:hasCountDetails ?countDetails .
+		?countDetails cd:hasOccurredOn ?hon .
+		?candidate can:hasResults ?res .
+		?res can:hasFinalResult ?fr
+		FILTER(?hon = '5') .
+		FILTER(?fr = 'Excluded') .
+	}
+	
+	7. Find the party/parties who have the maximum number of elected candidates.
+
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
+	SELECT  ?partyName (count(?candidate) as ?count) WHERE {
+		?candidate can:isPerson ?person .
+		?candidate can:hasResults ?res .
+		?candidate can:belongsToParty ?party .
+		?party can:hasName ?partyName .
+		?res can:hasFinalResult ?fr .
+		FILTER(?fr = 'Elected') .
+	} GROUP BY ?partyName ORDER BY DESC(?count) LIMIT 1
+	
+	8. Find the min no of votes a candidate has won the election with.
+	
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
+	SELECT (min(?vc) AS ?minvotes)  WHERE {
+		?candidate can:isPerson ?person .
+		?candidate can:hasResults ?res .
+		?candidate can:hasCountDetails ?countDet .
+		?countDet cd:hasVotes ?votes .
+		?votes cd:hasIterationTotalVote ?vc .
+		?res can:hasFinalResult ?fr .
+		FILTER (?vc > '0') .
+		FILTER (?fr = 'Elected') .
+	} 
+	
+	9. Find the constituencies in which candidates were excluded with less than 100 votes.
+	
+	10. Find the party/parties which has won the majority of the seats in constituency whos total poll is greater than 70k
+	
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
+	SELECT ?pname WHERE {
+		?candidate can:isPerson ?person .
+		?candidate can:hasResults ?res .
+		?res can:hasFinalResult ?fr .
+		?candidate can:constID ?const .
+		?candidate can:belongsToParty ?party .
+		?party can:hasName ?pname .
+		?const con:hasElectorate ?ele .
+		?ele con:totalPoll ?tPoll .
+		FILTER (?tPoll > '70000') .
+		FILTER (?fr = 'Elected') .
+}  GROUP BY ?pname

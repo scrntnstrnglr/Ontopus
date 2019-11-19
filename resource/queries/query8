@@ -1,11 +1,18 @@
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
-SELECT ?n ?y ?k WHERE {
-?x <https://www.electionsireland.org/2016/candidate/constID> ?z .
-?x  <http://xmlns.com/foaf/0.1/firstname> ?n .
-?z <https://www.electionsireland.org/2016/constituency/hasName> ?y .
-?x <https://www.electionsireland.org/2016/candidate/belongsToParty> ?p .
-?p <https://www.electionsireland.org/2016/candidate/partyAb> ?ab .
-?x <https://www.electionsireland.org/2016/candidate/hasCountDetails> ?c .
-?c <https://www.electionsireland.org/2016/countdetails/hasVotes> ?k .
-}
+	#Find the min no of votes a candidate has won the election with.
+	
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
+	SELECT (min(?vc) AS ?minvotes)  WHERE {
+		?candidate can:isPerson ?person .
+		?candidate can:hasResults ?res .
+		?candidate can:hasCountDetails ?countDet .
+		?countDet cd:hasVotes ?votes .
+		?votes cd:hasIterationTotalVote ?vc .
+		?res can:hasFinalResult ?fr .
+		FILTER (?vc > '0') .
+		FILTER (?fr = 'Elected') .
+	} 

@@ -1,6 +1,1 @@
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
-SELECT ?z ?x  WHERE {
-?y <https://electionsireland.org/results/general/candidate_first_name> ?x.
-?y <https://electionsireland.org/results/general/candidate_last_name> ?z.
-}
+	#Find the candidates who lost there deposits in Louth.
