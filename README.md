@@ -17,7 +17,7 @@ java -version
 1. Download the 'target' directory on your local. 
 2. It essential that all the resource folders and the jar remain within the same directory. 
 3. Double click on the executable jar file to launch the application. OR. 
-4. On your terminal/command prompt enter:
+4. On your terminal/command prompt enter after traversing to the jar directory.
 ```
 java -jar ONTPS.jar
 ``` 
