@@ -388,24 +388,47 @@ public class ApplicationWindow {
 		});
 		btnImportModel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser chooser = new JFileChooser();
-				int returnVal = chooser.showOpenDialog(frame);
-				if (returnVal == JFileChooser.APPROVE_OPTION) {
-					// writeToConsole("\n>Importing model from: " +
-					// chooser.getSelectedFile().toString(), editorPane_1);
-					System.out.print("INFO Importing model from: " + chooser.getSelectedFile().toString());
-					try {
-						ont = modelCreator.importFromFile(chooser.getSelectedFile().toString());
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					// writeToConsole("\n>Model Imported...", editorPane_1);
-					System.out.print("INFO Model Imported");
-					textFieldFileImported.setText(chooser.getSelectedFile().toString());
-					editorPane.setText(query1.basicQuery1);
-				}
+				if (ont != null) {
+					if (JOptionPane.showConfirmDialog(null, "Model already attached. Import new?", "WARNING",
+							JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+						JFileChooser chooser = new JFileChooser();
+						int returnVal = chooser.showOpenDialog(frame);
+						if (returnVal == JFileChooser.APPROVE_OPTION) {
+							// writeToConsole("\n>Importing model from: " +
+							// chooser.getSelectedFile().toString(), editorPane_1);
+							System.out.print("INFO Importing model from: " + chooser.getSelectedFile().toString());
+							try {
+								ont = modelCreator.importFromFile(chooser.getSelectedFile().toString());
+							} catch (FileNotFoundException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							// writeToConsole("\n>Model Imported...", editorPane_1);
+							System.out.print("INFO Model Imported");
+							textFieldFileImported.setText(chooser.getSelectedFile().toString());
+							editorPane.setText(query1.basicQuery1);
+						}
 
+					}
+				} else {
+					JFileChooser chooser = new JFileChooser();
+					int returnVal = chooser.showOpenDialog(frame);
+					if (returnVal == JFileChooser.APPROVE_OPTION) {
+						// writeToConsole("\n>Importing model from: " +
+						// chooser.getSelectedFile().toString(), editorPane_1);
+						System.out.print("INFO Importing model from: " + chooser.getSelectedFile().toString());
+						try {
+							ont = modelCreator.importFromFile(chooser.getSelectedFile().toString());
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						// writeToConsole("\n>Model Imported...", editorPane_1);
+						System.out.print("INFO Model Imported");
+						textFieldFileImported.setText(chooser.getSelectedFile().toString());
+						editorPane.setText(query1.basicQuery1);
+					}
+				}
 			}
 		});
 		ArrayList<String> itemList = fileManager.getFileNames();
