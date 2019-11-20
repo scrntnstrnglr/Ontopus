@@ -1,18 +1,23 @@
-	#Find the party/parties which has won the majority of the seats in constituency whos total poll is greater than 70k
+	# Find the party/parties which has won the majority of the seats in constituency whos total poll is greater than 70k
 	
 	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
 	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
 	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
+	PREFIX par: <https://www.electionsireland.org/2016/candidate/party/>
+	PREFIX result: <https://www.electionsireland.org/2016/candidate/result/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
+	PREFIX vot: <https://www.electionsireland.org/2016/countdetails/votes/>
+	PREFIX elec: <https://www.electionsireland.org/2016/constituency/electorate/>
 	SELECT ?pname WHERE {
 		?candidate can:isPerson ?person .
 		?candidate can:hasResults ?res .
-		?res can:hasFinalResult ?fr .
-		?candidate can:constID ?const .
-		?candidate can:belongsToParty ?party .
-		?party can:hasName ?pname .
+		?res result:hasFinalResult ?fr .
+		?candidate const:belongsTo ?const .
+		?candidate can:belongsTo ?party .
+		?party par:hasName ?pname .
 		?const con:hasElectorate ?ele .
-		?ele con:totalPoll ?tPoll .
+		?ele elec:totalPoll ?tPoll .
 		FILTER (?tPoll > '70000') .
 		FILTER (?fr = 'Elected') .
-}  GROUP BY ?pname
+	}  GROUP BY ?pname

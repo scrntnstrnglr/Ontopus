@@ -6,12 +6,14 @@
 	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
 	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
 	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
+	PREFIX par: <https://www.electionsireland.org/2016/candidate/party/>
+	PREFIX result: <https://www.electionsireland.org/2016/candidate/result/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
 	SELECT  (count(distinct ?candidate) as ?count)  WHERE {
-		?candidate can:isPerson ?person .
 		?candidate can:hasCountDetails ?countDetails .
 		?countDetails cd:hasOccurredOn ?hon .
 		?candidate can:hasResults ?res .
-		?res can:hasFinalResult ?fr
+		?res result:hasFinalResult ?fr .
 		FILTER(?hon = '5') .
 		FILTER(?fr = 'Excluded') .
 	}

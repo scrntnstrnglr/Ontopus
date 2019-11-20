@@ -6,13 +6,17 @@
 	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
 	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
 	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
-	SELECT (min(?vc) AS ?minvotes)  WHERE {
+	PREFIX par: <https://www.electionsireland.org/2016/candidate/party/>
+	PREFIX result: <https://www.electionsireland.org/2016/candidate/result/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
+	PREFIX vot: <https://www.electionsireland.org/2016/countdetails/votes/>
+	SELECT  (min(?vc) AS ?minvotes) WHERE {
 		?candidate can:isPerson ?person .
 		?candidate can:hasResults ?res .
 		?candidate can:hasCountDetails ?countDet .
 		?countDet cd:hasVotes ?votes .
-		?votes cd:hasIterationTotalVote ?vc .
-		?res can:hasFinalResult ?fr .
+		?votes vot:hasIterationTotalVote ?vc .
+		?res result:hasFinalResult ?fr .
 		FILTER (?vc > '0') .
 		FILTER (?fr = 'Elected') .
-	} 
+	}
