@@ -5,13 +5,15 @@
 	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
 	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX par: <https://www.electionsireland.org/2016/candidate/party/>
+	PREFIX result: <https://www.electionsireland.org/2016/candidate/result/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
 	SELECT ?name WHERE {
 		?candidate can:hasResults ?result .
-		?candidate can:constID ?const .
-		?const con:hasName ?conName .
-		?result  can:hasFinalResult ?finalResult .
-		?candidate can:belongsToParty ?party .
-		?party can:hasName ?name  .
+		?candidate const:belongsTo ?constituencyId .
+		?part par:hasName ?name .
+		?constituencyId con:hasName ?conName .
+		?result  result:hasFinalResult ?finalResult .
 		FILTER(?finalResult = 'Elected') .
 		FILTER regex(?conName, "^Dublin") .
 	} GROUP BY ?name

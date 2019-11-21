@@ -6,14 +6,16 @@
 	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 	PREFIX cand: <https://www.electionsireland.org/2016/candidate/>
 	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX par: <https://www.electionsireland.org/2016/candidate/party/>
+	PREFIX result: <https://www.electionsireland.org/2016/candidate/result/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
 	SELECT ?conName (count(distinct ?person) as ?count) WHERE {
 		?person foaf:gender ?gender .
 		?candidateId cand:isPerson ?person .
-		?candidateId cand:constID ?constituencyId .
+		?candidateId const:belongsTo ?constituencyId .
 		?constituencyId con:hasName ?conName .
 		?candidateId cand:hasResults ?res .
-		?res cand:hasFinalResult ?r
+		?res result:hasFinalResult ?r
 		FILTER(?gender = 'F') .
 		FILTER(?r = 'Elected') .
-	}
-	GROUP BY ?conName ORDER BY DESC(?count) LIMIT 1
+	} GROUP BY ?conName ORDER BY DESC(?count) LIMIT 1

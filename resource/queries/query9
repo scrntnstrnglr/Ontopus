@@ -1,1 +1,36 @@
-	#Find the constituencies in which candidates were excluded with less than 100 votes.
+	# Find the parties who got elected from Louth but got excluded from 'Dublin West'
+	
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX par: <https://www.electionsireland.org/2016/candidate/party/>
+	PREFIX result: <https://www.electionsireland.org/2016/candidate/result/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
+	SELECT ?conName ?pname ?fn ?ln ?finalResult WHERE {{
+		?candidateId const:belongsTo ?constituencyId .
+		?candidateId can:isPerson ?person .
+		?person foaf:firstname ?fn .
+		?person foaf:surname ?ln .
+		?constituencyId con:hasName ?conName .
+		?candidateId can:hasResults ?result .
+		?candidateId can:belongsTo ?party .
+		?party par:hasName ?pname .
+		?result result:hasFinalResult ?finalResult .
+		FILTER(?finalResult = 'Excluded') .
+		FILTER regex(?conName, "Dublin West") .
+	}
+	UNION {
+		?candidateId can:isPerson ?person .
+		?person foaf:firstname ?fn .
+		?person foaf:surname ?ln .
+		?candidateId const:belongsTo ?constituencyId .
+		?constituencyId con:hasName ?conName .
+		?candidateId can:hasResults ?result .
+		?candidateId can:belongsTo ?party .
+		?party par:hasName ?pname .
+		?result result:hasFinalResult ?finalResult .
+		FILTER(?finalResult = 'Elected') .
+		FILTER regex(?conName, "^Louth") .
+	}} 

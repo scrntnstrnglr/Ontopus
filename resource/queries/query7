@@ -6,11 +6,14 @@
 	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
 	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
 	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
+	PREFIX par: <https://www.electionsireland.org/2016/candidate/party/>
+	PREFIX result: <https://www.electionsireland.org/2016/candidate/result/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
 	SELECT  ?partyName (count(?candidate) as ?count) WHERE {
 		?candidate can:isPerson ?person .
 		?candidate can:hasResults ?res .
-		?candidate can:belongsToParty ?party .
-		?party can:hasName ?partyName .
-		?res can:hasFinalResult ?fr .
+		?candidate can:belongsTo ?party .
+		?party par:hasName ?partyName .
+		?res result:hasFinalResult ?fr .
 		FILTER(?fr = 'Elected') .
 	} GROUP BY ?partyName ORDER BY DESC(?count) LIMIT 1
