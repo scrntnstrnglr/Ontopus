@@ -1,10 +1,21 @@
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
-PREFIX can: <http://www.example.org/candidateconst/>
-PREFIX con: <https://electionsireland.org/results/const/>
-PREFIX cr: <https://electionsireland.org/results/general/candidacyresult/>
-SELECT ?x ?w WHERE {
-?x <http://xmlns.com/foaf/0.1/firstname> "John" .
-?x <http://www.example.org/candidateconst/constID> ?w 
-?w <http://xmlns.com/foaf/0.1/hasName> ?
-}
+	#Which constituency max. number of females got elected?
+	
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX cand: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX par: <https://www.electionsireland.org/2016/candidate/party/>
+	PREFIX result: <https://www.electionsireland.org/2016/candidate/result/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
+	SELECT ?conName (count(distinct ?person) as ?count) WHERE {
+		?person foaf:gender ?gender .
+		?candidateId cand:isPerson ?person .
+		?candidateId const:belongsTo ?constituencyId .
+		?constituencyId con:hasName ?conName .
+		?candidateId cand:hasResults ?res .
+		?res result:hasFinalResult ?r
+		FILTER(?gender = 'F') .
+		FILTER(?r = 'Elected') .
+	} GROUP BY ?conName ORDER BY DESC(?count) LIMIT 1

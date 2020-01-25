@@ -1,0 +1,22 @@
+	#List the candidates in a constituency having min. no. of candidates.
+	
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
+	SELECT ?fn ?ln WHERE {
+		?cand const:belongsTo ?constituencyId .
+		?cand can:isPerson ?person .
+		?person foaf:firstname ?fn .
+		?person foaf:surname ?ln .
+		 {
+			SELECT ?constituencyId (count(distinct ?candidate) as ?count) WHERE 
+			{
+				?candidate foaf:gender ?gender .
+				?candidateId can:isPerson ?candidate .
+				?candidateId const:belongsTo ?constituencyId .
+			} GROUP BY ?constituencyId ORDER BY ?count LIMIT 1
+		}
+	}

@@ -1,7 +1,19 @@
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
-SELECT ?x ?y ?p WHERE {
-?x <http://www.example.org/candidateconst/constID> ?z .
-?z  <http://xmlns.com/foaf/0.1/hasName> ?y .
-?x <http://www.example.org/candidateconst/belongsToParty> ?p
-}
+	#Find the party/parties who have the maximum number of elected candidates.
+
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX ont: <http://lab.Jena.Kdeg.ie/Ontology1#>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX can: <https://www.electionsireland.org/2016/candidate/>
+	PREFIX con: <https://www.electionsireland.org/2016/constituency/>
+	PREFIX cd: <https://www.electionsireland.org/2016/countdetails/>
+	PREFIX par: <https://www.electionsireland.org/2016/candidate/party/>
+	PREFIX result: <https://www.electionsireland.org/2016/candidate/result/>
+	PREFIX const: <https://www.electionsireland.org/2016/candidate/constituency/>
+	SELECT  ?partyName (count(?candidate) as ?count) WHERE {
+		?candidate can:isPerson ?person .
+		?candidate can:hasResults ?res .
+		?candidate can:belongsTo ?party .
+		?party par:hasName ?partyName .
+		?res result:hasFinalResult ?fr .
+		FILTER(?fr = 'Elected') .
+	} GROUP BY ?partyName ORDER BY DESC(?count) LIMIT 1
