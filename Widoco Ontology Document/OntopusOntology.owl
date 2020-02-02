@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:quo="https://www.electionsireland.org/2016/constituency/quo/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:party="https://www.electionsireland.org/2016/candidate/party/"
+     xmlns:seats="https://www.electionsireland.org/2016/constituency/seats/"
+     xmlns:votes="https://www.electionsireland.org/2016/countdetails/votes/"
+     xmlns:result="https://www.electionsireland.org/2016/candidate/result/"
+     xmlns:candidate="https://www.electionsireland.org/2016/candidate/"
+     xmlns:electorate="https://www.electionsireland.org/2016/constituency/electorate/"
+     xmlns:constituency="https://www.electionsireland.org/2016/constituency/"
+     xmlns:countdetails="https://www.electionsireland.org/2016/countdetails/">
+    <Ontology rdf:about="https://www.electionsireland.org"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/firstname -->
+
+    <AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/firstname"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/gender -->
+
+    <AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/gender"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/surname -->
+
+    <AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/surname"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/belongsTo -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/candidate/belongsTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/candidate"/>
+        <rdfs:domain>
+            <Restriction>
+                <onProperty rdf:resource="https://www.electionsireland.org/2016/candidate/party/belongsTo"/>
+                <minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</minQualifiedCardinality>
+                <onClass rdf:resource="https://www.electionsireland.org/2016/candidate/party"/>
+            </Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/candidate/party"/>
+    </ObjectProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/hasCountDetails -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/candidate/hasCountDetails">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/candidate"/>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/countdetails/iterations"/>
+    </ObjectProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/hasResults -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/candidate/hasResults">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/candidate"/>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/candidate/Result"/>
+    </ObjectProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/isPerson -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/candidate/isPerson">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/candidate"/>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/candidate/Person"/>
+    </ObjectProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/party/belongsTo -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/candidate/party/belongsTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/candidate"/>
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/party"/>
+        <rdfs:domain>
+            <Restriction>
+                <onProperty rdf:resource="https://www.electionsireland.org/2016/candidate/belongsTo"/>
+                <minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</minQualifiedCardinality>
+                <onClass rdf:resource="https://www.electionsireland.org/2016/constituency/constituency"/>
+            </Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/constituency/constituency"/>
+    </ObjectProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/party/hasCandidate -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/candidate/party/hasCandidate">
+        <equivalentProperty>
+            <rdf:Description>
+                <inverseOf rdf:resource="https://www.electionsireland.org/2016/candidate/belongsTo"/>
+            </rdf:Description>
+        </equivalentProperty>
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/party"/>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/candidate/candidate"/>
+    </ObjectProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/hasElectorate -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/constituency/hasElectorate">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/constituency"/>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/constituency/electorate"/>
+    </ObjectProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/hasQuota -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/constituency/hasQuota">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/constituency"/>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/constituency/quota"/>
+    </ObjectProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/hasSeats -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/constituency/hasSeats">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/constituency"/>
+        <rdfs:domain>
+            <Restriction>
+                <onProperty rdf:resource="https://www.electionsireland.org/2016/constituency/hasSeats"/>
+                <minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</minQualifiedCardinality>
+                <onClass rdf:resource="https://www.electionsireland.org/2016/constituency/seats"/>
+            </Restriction>
+        </rdfs:domain>
+        <rdfs:domain>
+            <Restriction>
+                <onProperty rdf:resource="https://www.electionsireland.org/2016/constituency/hasSeats"/>
+                <maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</maxQualifiedCardinality>
+                <onClass rdf:resource="https://www.electionsireland.org/2016/constituency/seats"/>
+            </Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/constituency/seats"/>
+    </ObjectProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/countdetails/hasVotes -->
+
+    <ObjectProperty rdf:about="https://www.electionsireland.org/2016/countdetails/hasVotes">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/countdetails/iterations"/>
+        <rdfs:range rdf:resource="https://www.electionsireland.org/2016/countdetails/votes"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/candidateID -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/candidate/candidateID">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/candidate"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/party/hasName -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/candidate/party/hasName">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/party"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/party/partyAb -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/candidate/party/partyAb">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/party"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/result/hasFinalResult -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/candidate/result/hasFinalResult">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/Result"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/hasFinalCountNumber -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/constituency/hasFinalCountNumber">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/constituency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/hasName -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/constituency/hasName">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/constituency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/hasNumOfCandidates -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/constituency/hasNumOfCandidates">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/constituency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/electorate"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/electorate/totalPoll -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/constituency/electorate/totalPoll">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/electorate"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/electorate/validPoll -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/constituency/electorate/validPoll">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/electorate"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/quota"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/seats/seatsFilled -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/constituency/seats/seatsFilled">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/constituency/seats"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/countdetails/hasIteration -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/countdetails/hasIteration">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/countdetails/iterations"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/countdetails/hasOccurredOn -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/countdetails/hasOccurredOn">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/countdetails/iterations"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/countdetails/hasResult -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/countdetails/hasResult">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/countdetails/iterations"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/countdetails/votes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/countdetails/votes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/countdetails/votes/hasTransfers -->
+
+    <DatatypeProperty rdf:about="https://www.electionsireland.org/2016/countdetails/votes/hasTransfers">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/countdetails/votes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://xmlns.com/foaf/0.1/firstname -->
+
+    <DatatypeProperty rdf:about="https://xmlns.com/foaf/0.1/firstname">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://xmlns.com/foaf/0.1/gender -->
+
+    <DatatypeProperty rdf:about="https://xmlns.com/foaf/0.1/gender">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- https://xmlns.com/foaf/0.1/surname -->
+
+    <DatatypeProperty rdf:about="https://xmlns.com/foaf/0.1/surname">
+        <rdfs:domain rdf:resource="https://www.electionsireland.org/2016/candidate/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/Person -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/candidate/Person"/>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/Result -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/candidate/Result"/>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/candidate -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/candidate/candidate"/>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/candidate/party -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/candidate/party"/>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/constituency -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/constituency/constituency"/>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/electorate -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/constituency/electorate"/>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/quota -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/constituency/quota"/>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/constituency/seats -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/constituency/seats"/>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/countdetails/iterations -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/countdetails/iterations"/>
+    
+
+
+    <!-- https://www.electionsireland.org/2016/countdetails/votes -->
+
+    <Class rdf:about="https://www.electionsireland.org/2016/countdetails/votes"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

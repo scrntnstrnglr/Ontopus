@@ -1,0 +1,258 @@
+<https://www.electionsireland.org> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://xmlns.com/foaf/0.1/firstname
+<http://xmlns.com/foaf/0.1/firstname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://xmlns.com/foaf/0.1/gender
+<http://xmlns.com/foaf/0.1/gender> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://xmlns.com/foaf/0.1/surname
+<http://xmlns.com/foaf/0.1/surname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# https://www.electionsireland.org/2016/candidate/belongsTo
+<https://www.electionsireland.org/2016/candidate/belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/candidate/belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
+<https://www.electionsireland.org/2016/candidate/belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/candidate> .
+<https://www.electionsireland.org/2016/candidate/belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> _:genid2 .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid2 <http://www.w3.org/2002/07/owl#onProperty> <https://www.electionsireland.org/2016/candidate/party/belongsTo> .
+_:genid2 <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid2 <http://www.w3.org/2002/07/owl#onClass> <https://www.electionsireland.org/2016/candidate/party> .
+<https://www.electionsireland.org/2016/candidate/belongsTo> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/candidate/party> .
+# 
+# https://www.electionsireland.org/2016/candidate/hasCountDetails
+<https://www.electionsireland.org/2016/candidate/hasCountDetails> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/candidate/hasCountDetails> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/candidate> .
+<https://www.electionsireland.org/2016/candidate/hasCountDetails> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/countdetails/iterations> .
+# 
+# https://www.electionsireland.org/2016/candidate/hasResults
+<https://www.electionsireland.org/2016/candidate/hasResults> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/candidate/hasResults> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/candidate> .
+<https://www.electionsireland.org/2016/candidate/hasResults> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/candidate/Result> .
+# 
+# https://www.electionsireland.org/2016/candidate/isPerson
+<https://www.electionsireland.org/2016/candidate/isPerson> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/candidate/isPerson> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#SymmetricProperty> .
+<https://www.electionsireland.org/2016/candidate/isPerson> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/candidate> .
+<https://www.electionsireland.org/2016/candidate/isPerson> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/candidate/Person> .
+# 
+# https://www.electionsireland.org/2016/candidate/party/belongsTo
+<https://www.electionsireland.org/2016/candidate/party/belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/candidate/party/belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
+<https://www.electionsireland.org/2016/candidate/party/belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/candidate> .
+<https://www.electionsireland.org/2016/candidate/party/belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/party> .
+<https://www.electionsireland.org/2016/candidate/party/belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> _:genid3 .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid3 <http://www.w3.org/2002/07/owl#onProperty> <https://www.electionsireland.org/2016/candidate/belongsTo> .
+_:genid3 <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid3 <http://www.w3.org/2002/07/owl#onClass> <https://www.electionsireland.org/2016/constituency/constituency> .
+<https://www.electionsireland.org/2016/candidate/party/belongsTo> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/constituency/constituency> .
+# 
+# https://www.electionsireland.org/2016/candidate/party/hasCandidate
+<https://www.electionsireland.org/2016/candidate/party/hasCandidate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/candidate/party/hasCandidate> <http://www.w3.org/2002/07/owl#equivalentProperty> _:genid1 .
+_:genid1 <http://www.w3.org/2002/07/owl#inverseOf> <https://www.electionsireland.org/2016/candidate/belongsTo> .
+<https://www.electionsireland.org/2016/candidate/party/hasCandidate> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/party> .
+<https://www.electionsireland.org/2016/candidate/party/hasCandidate> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/candidate/candidate> .
+# 
+# https://www.electionsireland.org/2016/constituency/hasElectorate
+<https://www.electionsireland.org/2016/constituency/hasElectorate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/constituency/hasElectorate> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/constituency> .
+<https://www.electionsireland.org/2016/constituency/hasElectorate> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/constituency/electorate> .
+# 
+# https://www.electionsireland.org/2016/constituency/hasQuota
+<https://www.electionsireland.org/2016/constituency/hasQuota> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/constituency/hasQuota> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/constituency> .
+<https://www.electionsireland.org/2016/constituency/hasQuota> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/constituency/quota> .
+# 
+# https://www.electionsireland.org/2016/constituency/hasSeats
+<https://www.electionsireland.org/2016/constituency/hasSeats> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/constituency/hasSeats> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/constituency> .
+<https://www.electionsireland.org/2016/constituency/hasSeats> <http://www.w3.org/2000/01/rdf-schema#domain> _:genid4 .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid4 <http://www.w3.org/2002/07/owl#onProperty> <https://www.electionsireland.org/2016/constituency/hasSeats> .
+_:genid4 <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "3"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid4 <http://www.w3.org/2002/07/owl#onClass> <https://www.electionsireland.org/2016/constituency/seats> .
+<https://www.electionsireland.org/2016/constituency/hasSeats> <http://www.w3.org/2000/01/rdf-schema#domain> _:genid5 .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid5 <http://www.w3.org/2002/07/owl#onProperty> <https://www.electionsireland.org/2016/constituency/hasSeats> .
+_:genid5 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "5"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid5 <http://www.w3.org/2002/07/owl#onClass> <https://www.electionsireland.org/2016/constituency/seats> .
+<https://www.electionsireland.org/2016/constituency/hasSeats> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/constituency/seats> .
+# 
+# https://www.electionsireland.org/2016/countdetails/hasVotes
+<https://www.electionsireland.org/2016/countdetails/hasVotes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://www.electionsireland.org/2016/countdetails/hasVotes> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/countdetails/iterations> .
+<https://www.electionsireland.org/2016/countdetails/hasVotes> <http://www.w3.org/2000/01/rdf-schema#range> <https://www.electionsireland.org/2016/countdetails/votes> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# https://www.electionsireland.org/2016/candidate/candidateID
+<https://www.electionsireland.org/2016/candidate/candidateID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/candidate/candidateID> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/candidate> .
+<https://www.electionsireland.org/2016/candidate/candidateID> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/candidate/party/hasName
+<https://www.electionsireland.org/2016/candidate/party/hasName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/candidate/party/hasName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/party> .
+<https://www.electionsireland.org/2016/candidate/party/hasName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# https://www.electionsireland.org/2016/candidate/party/partyAb
+<https://www.electionsireland.org/2016/candidate/party/partyAb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/candidate/party/partyAb> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/party> .
+<https://www.electionsireland.org/2016/candidate/party/partyAb> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# https://www.electionsireland.org/2016/candidate/result/hasFinalResult
+<https://www.electionsireland.org/2016/candidate/result/hasFinalResult> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/candidate/result/hasFinalResult> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/Result> .
+<https://www.electionsireland.org/2016/candidate/result/hasFinalResult> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# https://www.electionsireland.org/2016/constituency/hasFinalCountNumber
+<https://www.electionsireland.org/2016/constituency/hasFinalCountNumber> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/constituency/hasFinalCountNumber> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/constituency> .
+<https://www.electionsireland.org/2016/constituency/hasFinalCountNumber> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/constituency/hasName
+<https://www.electionsireland.org/2016/constituency/hasName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/constituency/hasName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/constituency> .
+<https://www.electionsireland.org/2016/constituency/hasName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# https://www.electionsireland.org/2016/constituency/hasNumOfCandidates
+<https://www.electionsireland.org/2016/constituency/hasNumOfCandidates> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/constituency/hasNumOfCandidates> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/constituency> .
+<https://www.electionsireland.org/2016/constituency/hasNumOfCandidates> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll
+<https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/electorate> .
+<https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/constituency/electorate/totalPoll
+<https://www.electionsireland.org/2016/constituency/electorate/totalPoll> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/constituency/electorate/totalPoll> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/electorate> .
+<https://www.electionsireland.org/2016/constituency/electorate/totalPoll> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/constituency/electorate/validPoll
+<https://www.electionsireland.org/2016/constituency/electorate/validPoll> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/constituency/electorate/validPoll> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/electorate> .
+<https://www.electionsireland.org/2016/constituency/electorate/validPoll> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep
+<https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/quota> .
+<https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/constituency/seats/seatsFilled
+<https://www.electionsireland.org/2016/constituency/seats/seatsFilled> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/constituency/seats/seatsFilled> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/constituency/seats> .
+<https://www.electionsireland.org/2016/constituency/seats/seatsFilled> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/countdetails/hasIteration
+<https://www.electionsireland.org/2016/countdetails/hasIteration> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/countdetails/hasIteration> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/countdetails/iterations> .
+<https://www.electionsireland.org/2016/countdetails/hasIteration> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/countdetails/hasOccurredOn
+<https://www.electionsireland.org/2016/countdetails/hasOccurredOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/countdetails/hasOccurredOn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/countdetails/iterations> .
+<https://www.electionsireland.org/2016/countdetails/hasOccurredOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/countdetails/hasResult
+<https://www.electionsireland.org/2016/countdetails/hasResult> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/countdetails/hasResult> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/countdetails/iterations> .
+<https://www.electionsireland.org/2016/countdetails/hasResult> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote
+<https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/countdetails/votes> .
+<https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote
+<https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/countdetails/votes> .
+<https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://www.electionsireland.org/2016/countdetails/votes/hasTransfers
+<https://www.electionsireland.org/2016/countdetails/votes/hasTransfers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://www.electionsireland.org/2016/countdetails/votes/hasTransfers> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/countdetails/votes> .
+<https://www.electionsireland.org/2016/countdetails/votes/hasTransfers> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+# 
+# https://xmlns.com/foaf/0.1/firstname
+<https://xmlns.com/foaf/0.1/firstname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://xmlns.com/foaf/0.1/firstname> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/Person> .
+<https://xmlns.com/foaf/0.1/firstname> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# https://xmlns.com/foaf/0.1/gender
+<https://xmlns.com/foaf/0.1/gender> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://xmlns.com/foaf/0.1/gender> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/Person> .
+<https://xmlns.com/foaf/0.1/gender> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# https://xmlns.com/foaf/0.1/surname
+<https://xmlns.com/foaf/0.1/surname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://xmlns.com/foaf/0.1/surname> <http://www.w3.org/2000/01/rdf-schema#domain> <https://www.electionsireland.org/2016/candidate/Person> .
+<https://xmlns.com/foaf/0.1/surname> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# https://www.electionsireland.org/2016/candidate/Person
+<https://www.electionsireland.org/2016/candidate/Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://www.electionsireland.org/2016/candidate/Result
+<https://www.electionsireland.org/2016/candidate/Result> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://www.electionsireland.org/2016/candidate/candidate
+<https://www.electionsireland.org/2016/candidate/candidate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://www.electionsireland.org/2016/candidate/party
+<https://www.electionsireland.org/2016/candidate/party> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://www.electionsireland.org/2016/constituency/constituency
+<https://www.electionsireland.org/2016/constituency/constituency> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://www.electionsireland.org/2016/constituency/electorate
+<https://www.electionsireland.org/2016/constituency/electorate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://www.electionsireland.org/2016/constituency/quota
+<https://www.electionsireland.org/2016/constituency/quota> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://www.electionsireland.org/2016/constituency/seats
+<https://www.electionsireland.org/2016/constituency/seats> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://www.electionsireland.org/2016/countdetails/iterations
+<https://www.electionsireland.org/2016/countdetails/iterations> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://www.electionsireland.org/2016/countdetails/votes
+<https://www.electionsireland.org/2016/countdetails/votes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# Generated by the OWL API (version 5.1.11) https://github.com/owlcs/owlapi/

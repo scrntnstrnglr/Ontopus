@@ -1,0 +1,753 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "baseIris" : [ "https://www.electionsireland.org/2016/constituency/seats", "https://www.electionsireland.org/2016/constituency/quo", "https://www.electionsireland.org/2016/constituency/electorate", "https://www.electionsireland.org/2016/candidate", "http://www.w3.org/2000/01/rdf-schema", "https://xmlns.com/foaf/0.1", "http://www.w3.org/2001/XMLSchema", "https://www.electionsireland.org/2016/countdetails/votes", "https://www.electionsireland.org/2016/candidate/party", "https://www.electionsireland.org/2016/candidate/result", "https://www.electionsireland.org/2016/countdetails", "https://www.electionsireland.org/2016/constituency" ],
+    "iri" : "https://www.electionsireland.org"
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "0",
+    "type" : "owl:Class"
+  }, {
+    "id" : "2",
+    "type" : "owl:Class"
+  }, {
+    "id" : "26",
+    "type" : "owl:Class"
+  }, {
+    "id" : "32",
+    "type" : "owl:Class"
+  }, {
+    "id" : "33",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "5",
+    "type" : "owl:Class"
+  }, {
+    "id" : "23",
+    "type" : "owl:Class"
+  }, {
+    "id" : "42",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "10",
+    "type" : "owl:Class"
+  }, {
+    "id" : "25",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "11",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "35",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "19",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "13",
+    "type" : "owl:Class"
+  }, {
+    "id" : "45",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "41",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "46",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "37",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "3",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "47",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "29",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "48",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "49",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "50",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "8",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "16",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "6",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "31",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "14",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "21",
+    "type" : "owl:Class"
+  }, {
+    "id" : "18",
+    "type" : "owl:Class"
+  }, {
+    "id" : "39",
+    "type" : "owl:Class"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "https://www.electionsireland.org/2016/constituency/quota",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "quota"
+    },
+    "attributes" : [ "external" ],
+    "id" : "0"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/seats",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "seats"
+    },
+    "attributes" : [ "external" ],
+    "id" : "2"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/Result",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Result"
+    },
+    "attributes" : [ "external" ],
+    "id" : "26"
+  }, {
+    "instances" : 0,
+    "union" : [ "13", "23" ],
+    "attributes" : [ "union", "anonymous" ],
+    "id" : "32"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "33",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/electorate",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "electorate"
+    },
+    "attributes" : [ "external" ],
+    "id" : "5"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/candidate",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "candidate"
+    },
+    "attributes" : [ "external" ],
+    "id" : "23"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "42",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/Person",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Person"
+    },
+    "attributes" : [ "external" ],
+    "id" : "10"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "25",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "11",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "35",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "19",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/party",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "party"
+    },
+    "attributes" : [ "external" ],
+    "id" : "13"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "45",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "41",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "46",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "37",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "3",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "47",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "29",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "48",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "49",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "50",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "8",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "16",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "6",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "31",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "14",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/countdetails/votes",
+    "baseIri" : "https://www.electionsireland.org/2016/countdetails",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "votes"
+    },
+    "attributes" : [ "external" ],
+    "id" : "21"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/countdetails/iterations",
+    "baseIri" : "https://www.electionsireland.org/2016/countdetails",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "iterations"
+    },
+    "attributes" : [ "external" ],
+    "id" : "18"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/constituency",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "constituency"
+    },
+    "attributes" : [ "external" ],
+    "id" : "39"
+  } ],
+  "property" : [ {
+    "id" : "1",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "4",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "7",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "9",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "12",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "15",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "17",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "20",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "22",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "24",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "27",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "28",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "30",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "34",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "36",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "38",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "40",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "43",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "44",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "51",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "52",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "53",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "54",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "55",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "56",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "57",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "58",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "59",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "60",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "61",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "62",
+    "type" : "owl:objectProperty"
+  } ],
+  "propertyAttribute" : [ {
+    "iri" : "https://www.electionsireland.org/2016/constituency/seats/seatsFilled",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency/seats",
+    "range" : "3",
+    "label" : {
+      "IRI-based" : "seatsFilled"
+    },
+    "domain" : "2",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "1"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/electorate/validPoll",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency/electorate",
+    "range" : "6",
+    "label" : {
+      "IRI-based" : "validPoll"
+    },
+    "domain" : "5",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "4"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency/electorate",
+    "range" : "8",
+    "label" : {
+      "IRI-based" : "spoiledPoll"
+    },
+    "domain" : "5",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "7"
+  }, {
+    "iri" : "https://xmlns.com/foaf/0.1/gender",
+    "baseIri" : "https://xmlns.com/foaf/0.1",
+    "range" : "11",
+    "label" : {
+      "IRI-based" : "gender"
+    },
+    "domain" : "10",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "9"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/party/hasName",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate/party",
+    "range" : "14",
+    "label" : {
+      "IRI-based" : "hasName"
+    },
+    "domain" : "13",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "12"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/electorate/totalPoll",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency/electorate",
+    "range" : "16",
+    "label" : {
+      "IRI-based" : "totalPoll"
+    },
+    "domain" : "5",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "15"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/countdetails/hasOccurredOn",
+    "baseIri" : "https://www.electionsireland.org/2016/countdetails",
+    "range" : "19",
+    "label" : {
+      "IRI-based" : "hasOccurredOn"
+    },
+    "domain" : "18",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "17"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/countdetails/hasVotes",
+    "baseIri" : "https://www.electionsireland.org/2016/countdetails",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "hasVotes"
+    },
+    "domain" : "18",
+    "attributes" : [ "object", "external" ],
+    "id" : "20"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/isPerson",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate",
+    "range" : "10",
+    "label" : {
+      "IRI-based" : "isPerson"
+    },
+    "domain" : "23",
+    "attributes" : [ "object", "symmetric", "external" ],
+    "id" : "22"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/countdetails/votes/hasTransfers",
+    "baseIri" : "https://www.electionsireland.org/2016/countdetails/votes",
+    "range" : "25",
+    "label" : {
+      "IRI-based" : "hasTransfers"
+    },
+    "domain" : "21",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "24"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/hasCountDetails",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate",
+    "range" : "18",
+    "label" : {
+      "IRI-based" : "hasCountDetails"
+    },
+    "domain" : "23",
+    "attributes" : [ "object", "external" ],
+    "id" : "27"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/result/hasFinalResult",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate/result",
+    "range" : "29",
+    "label" : {
+      "IRI-based" : "hasFinalResult"
+    },
+    "domain" : "26",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "28"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/candidateID",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate",
+    "range" : "31",
+    "label" : {
+      "IRI-based" : "candidateID"
+    },
+    "domain" : "23",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "30"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/countdetails/hasResult",
+    "baseIri" : "https://www.electionsireland.org/2016/countdetails",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "hasResult"
+    },
+    "domain" : "18",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "34"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/countdetails/hasIteration",
+    "baseIri" : "https://www.electionsireland.org/2016/countdetails",
+    "range" : "37",
+    "label" : {
+      "IRI-based" : "hasIteration"
+    },
+    "domain" : "18",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "36"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/hasQuota",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "range" : "0",
+    "label" : {
+      "IRI-based" : "hasQuota"
+    },
+    "domain" : "39",
+    "attributes" : [ "object", "external" ],
+    "id" : "38"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote",
+    "baseIri" : "https://www.electionsireland.org/2016/countdetails/votes",
+    "range" : "41",
+    "label" : {
+      "IRI-based" : "hasIterationTotalVote"
+    },
+    "domain" : "21",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "40"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/party/belongsTo",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate/party",
+    "range" : "39",
+    "label" : {
+      "IRI-based" : "belongsTo"
+    },
+    "domain" : "32",
+    "attributes" : [ "object", "transitive", "external" ],
+    "id" : "43"
+  }, {
+    "iri" : "https://xmlns.com/foaf/0.1/surname",
+    "baseIri" : "https://xmlns.com/foaf/0.1",
+    "range" : "33",
+    "label" : {
+      "IRI-based" : "surname"
+    },
+    "domain" : "10",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "44"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/party/hasCandidate",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate/party",
+    "range" : "23",
+    "label" : {
+      "IRI-based" : "hasCandidate"
+    },
+    "domain" : "13",
+    "attributes" : [ "object", "external" ],
+    "id" : "51"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/hasSeats",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "range" : "2",
+    "label" : {
+      "IRI-based" : "hasSeats"
+    },
+    "domain" : "39",
+    "attributes" : [ "object", "external" ],
+    "id" : "52"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/hasName",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "range" : "49",
+    "label" : {
+      "IRI-based" : "hasName"
+    },
+    "domain" : "39",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "53"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/party/partyAb",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate/party",
+    "range" : "47",
+    "label" : {
+      "IRI-based" : "partyAb"
+    },
+    "domain" : "13",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "54"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency/quo",
+    "range" : "46",
+    "label" : {
+      "IRI-based" : "reqToSaveDep"
+    },
+    "domain" : "0",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "55"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/hasNumOfCandidates",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "range" : "50",
+    "label" : {
+      "IRI-based" : "hasNumOfCandidates"
+    },
+    "domain" : "39",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "56"
+  }, {
+    "iri" : "https://xmlns.com/foaf/0.1/firstname",
+    "baseIri" : "https://xmlns.com/foaf/0.1",
+    "range" : "42",
+    "label" : {
+      "IRI-based" : "firstname"
+    },
+    "domain" : "10",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "57"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/hasFinalCountNumber",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "range" : "48",
+    "label" : {
+      "IRI-based" : "hasFinalCountNumber"
+    },
+    "domain" : "39",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "58"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/hasResults",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate",
+    "range" : "26",
+    "label" : {
+      "IRI-based" : "hasResults"
+    },
+    "domain" : "23",
+    "attributes" : [ "object", "external" ],
+    "id" : "59"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote",
+    "baseIri" : "https://www.electionsireland.org/2016/countdetails/votes",
+    "range" : "45",
+    "label" : {
+      "IRI-based" : "hasIterationVote"
+    },
+    "domain" : "21",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "60"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/candidate/belongsTo",
+    "baseIri" : "https://www.electionsireland.org/2016/candidate",
+    "range" : "13",
+    "label" : {
+      "IRI-based" : "belongsTo"
+    },
+    "domain" : "23",
+    "attributes" : [ "object", "transitive", "external" ],
+    "id" : "61"
+  }, {
+    "iri" : "https://www.electionsireland.org/2016/constituency/hasElectorate",
+    "baseIri" : "https://www.electionsireland.org/2016/constituency",
+    "range" : "5",
+    "label" : {
+      "IRI-based" : "hasElectorate"
+    },
+    "domain" : "39",
+    "attributes" : [ "object", "external" ],
+    "id" : "62"
+  } ]
+}

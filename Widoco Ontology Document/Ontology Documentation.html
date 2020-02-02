@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" href="resources/primer.css" media="screen" />    <link rel="stylesheet" href="resources/rec.css" media="screen" />    <link rel="stylesheet" href="resources/extra.css" media="screen" />    <link rel="stylesheet" href="resources/owl.css" media="screen" />    <title>Elections Ireland 2016</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"TechArticle","url":"https://www.electionsireland.org","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://www.electionsireland.org","name":"Elections Ireland 2016", "headline":"This is information on the candidates,constituencies for the Ireland General Elections 2016.", "datePublished":"Wed Nov 20 18:59:36 GMT 2019", "author":[{"@type":"Person","name":"Siddhartha"},{"@type":"Person","name":"Shubham"},{"@type":"Person","name":"Mukesh"},{"@type":"Person","name":"Tanvi"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+ $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>Elections Ireland 2016</h1>
+
+
+<dl>
+<dt>This version:</dt>
+<dd><a href="1.0">1.0</a></dd>
+<dt>Latest version:</dt>
+<dd><a href="1.0">1.0</a></dd>
+<dt>Authors:</dt>
+<dd>Siddhartha, Trinity College Dublin</dd><dd>Shubham, Trinity College Dublin</dd><dd>Mukesh, Trinity College Dublin</dd><dd>Tanvi, Trinity College Dublin</dd><dd>Tanmay, Trinity College Dublin</dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.json" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.xml" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License: </dt><dd><a href="http://insertlicenseURIhere.org" target="_blank"><img src="https://img.shields.io/badge/License-license%20name%20goes%20here-blue.svg" alt="http://insertlicenseURIhere.org" /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+</dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div>     <div id="abstract"><h2>Abstract</h2><span class="markdown">
+This is information on the candidates,constituencies for the Ireland General Elections 2016.</span>
+</div>
+<div id="toc"></div> 
+
+<!--INTRODUCTION SECTION-->
+    <div id="introduction"><h2 id="intro" class="list">Introduction <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This is a place holder text for the introduction. The introduction should briefly describe the ontology, its motivation, state of the art and goals.</span>
+<div id="namespacedeclarations">
+<h3 id="ns" class="list">Namespace declarations</h3>
+<div id="ns" align="center">
+<table>
+<caption> <a href="#ns"> Table 1</a>: Namespaces used in the document </caption>
+<tbody>
+<tr><td><b>[Ontology NS Prefix]</b></td><td>&lt;https://www.electionsireland.org&gt;</td></tr>
+<tr><td><b>countdetails</b></td><td>&lt;https://www.electionsireland.org/2016/countdetails&gt;</td></tr>
+<tr><td><b>owl</b></td><td>&lt;http://www.w3.org/2002/07/owl&gt;</td></tr>
+<tr><td><b>xsd</b></td><td>&lt;http://www.w3.org/2001/XMLSchema&gt;</td></tr>
+<tr><td><b>quo</b></td><td>&lt;https://www.electionsireland.org/2016/constituency/quo&gt;</td></tr>
+<tr><td><b>rdfs</b></td><td>&lt;http://www.w3.org/2000/01/rdf-schema&gt;</td></tr>
+<tr><td><b>seats</b></td><td>&lt;https://www.electionsireland.org/2016/constituency/seats&gt;</td></tr>
+<tr><td><b>result</b></td><td>&lt;https://www.electionsireland.org/2016/candidate/result&gt;</td></tr>
+<tr><td><b>candidate</b></td><td>&lt;https://www.electionsireland.org/2016/candidate&gt;</td></tr>
+<tr><td><b>0-1</b></td><td>&lt;https://xmlns.com/foaf/0.1&gt;</td></tr>
+<tr><td><b>constituency</b></td><td>&lt;https://www.electionsireland.org/2016/constituency&gt;</td></tr>
+<tr><td><b>rdf</b></td><td>&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns&gt;</td></tr>
+<tr><td><b>votes</b></td><td>&lt;https://www.electionsireland.org/2016/countdetails/votes&gt;</td></tr>
+<tr><td><b>electorate</b></td><td>&lt;https://www.electionsireland.org/2016/constituency/electorate&gt;</td></tr>
+<tr><td><b>foaf</b></td><td>&lt;http://xmlns.com/foaf/0.1&gt;</td></tr>
+<tr><td><b>party</b></td><td>&lt;https://www.electionsireland.org/2016/candidate/party&gt;</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">[Elections Ireland 2016]: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Object Properties</h4><ul class="hlist">
+   <li>
+      <a href="#/2016/candidate/belongsTo"
+         title="https://www.electionsireland.org/2016/candidate/belongsTo">
+         <span>belongs to</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/candidate/party/belongsTo"
+         title="https://www.electionsireland.org/2016/candidate/party/belongsTo">
+         <span>belongs to</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/candidate/party/hasCandidate"
+         title="https://www.electionsireland.org/2016/candidate/party/hasCandidate">
+         <span>has candidate</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/candidate/hasCountDetails"
+         title="https://www.electionsireland.org/2016/candidate/hasCountDetails">
+         <span>has count details</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/hasElectorate"
+         title="https://www.electionsireland.org/2016/constituency/hasElectorate">
+         <span>has electorate</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/hasQuota"
+         title="https://www.electionsireland.org/2016/constituency/hasQuota">
+         <span>has quota</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/candidate/hasResults"
+         title="https://www.electionsireland.org/2016/candidate/hasResults">
+         <span>has results</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/hasSeats"
+         title="https://www.electionsireland.org/2016/constituency/hasSeats">
+         <span>has seats</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/countdetails/hasVotes"
+         title="https://www.electionsireland.org/2016/countdetails/hasVotes">
+         <span>has votes</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/candidate/isPerson"
+         title="https://www.electionsireland.org/2016/candidate/isPerson">
+         <span>is person</span>
+      </a>
+   </li>
+</ul><h4>Data Properties</h4><ul class="hlist">
+   <li>
+      <a href="#/2016/candidate/candidateID"
+         title="https://www.electionsireland.org/2016/candidate/candidateID">
+         <span>candidate i d</span>
+      </a>
+   </li>
+   <li>
+      <a href="#https://xmlns.com/foaf/0.1/firstname" title="https://xmlns.com/foaf/0.1/firstname">
+         <span>firstname</span>
+      </a>
+   </li>
+   <li>
+      <a href="#https://xmlns.com/foaf/0.1/gender" title="https://xmlns.com/foaf/0.1/gender">
+         <span>gender</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/hasFinalCountNumber"
+         title="https://www.electionsireland.org/2016/constituency/hasFinalCountNumber">
+         <span>has final count number</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/candidate/result/hasFinalResult"
+         title="https://www.electionsireland.org/2016/candidate/result/hasFinalResult">
+         <span>has final result</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/countdetails/hasIteration"
+         title="https://www.electionsireland.org/2016/countdetails/hasIteration">
+         <span>has iteration</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/countdetails/votes/hasIterationTotalVote"
+         title="https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote">
+         <span>has iteration total vote</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/countdetails/votes/hasIterationVote"
+         title="https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote">
+         <span>has iteration vote</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/candidate/party/hasName"
+         title="https://www.electionsireland.org/2016/candidate/party/hasName">
+         <span>has name</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/hasName"
+         title="https://www.electionsireland.org/2016/constituency/hasName">
+         <span>has name</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/hasNumOfCandidates"
+         title="https://www.electionsireland.org/2016/constituency/hasNumOfCandidates">
+         <span>has num of candidates</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/countdetails/hasOccurredOn"
+         title="https://www.electionsireland.org/2016/countdetails/hasOccurredOn">
+         <span>has occurred on</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/countdetails/hasResult"
+         title="https://www.electionsireland.org/2016/countdetails/hasResult">
+         <span>has result</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/countdetails/votes/hasTransfers"
+         title="https://www.electionsireland.org/2016/countdetails/votes/hasTransfers">
+         <span>has transfers</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/candidate/party/partyAb"
+         title="https://www.electionsireland.org/2016/candidate/party/partyAb">
+         <span>party ab</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/quo/reqToSaveDep"
+         title="https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep">
+         <span>req to save dep</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/seats/seatsFilled"
+         title="https://www.electionsireland.org/2016/constituency/seats/seatsFilled">
+         <span>seats filled</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/electorate/spoiledPoll"
+         title="https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll">
+         <span>spoiled poll</span>
+      </a>
+   </li>
+   <li>
+      <a href="#https://xmlns.com/foaf/0.1/surname" title="https://xmlns.com/foaf/0.1/surname">
+         <span>surname</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/electorate/totalPoll"
+         title="https://www.electionsireland.org/2016/constituency/electorate/totalPoll">
+         <span>total poll</span>
+      </a>
+   </li>
+   <li>
+      <a href="#/2016/constituency/electorate/validPoll"
+         title="https://www.electionsireland.org/2016/constituency/electorate/validPoll">
+         <span>valid poll</span>
+      </a>
+   </li>
+</ul><h4>Annotation Properties</h4><ul class="hlist">
+   <li>
+      <a href="#http://xmlns.com/foaf/0.1/firstname" title="http://xmlns.com/foaf/0.1/firstname">
+         <span>firstname</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://xmlns.com/foaf/0.1/gender" title="http://xmlns.com/foaf/0.1/gender">
+         <span>gender</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://xmlns.com/foaf/0.1/surname" title="http://xmlns.com/foaf/0.1/surname">
+         <span>surname</span>
+      </a>
+   </li>
+</ul><img align="center" width="100%" height ="500px" src="Images/OntopusOntology.owl.svg"></img> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">[Elections Ireland 2016]: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This is a placeholder text for the description of your ontology. The description should include an explanation and a diagram explaining how the classes are related, examples of usage, etc.</span>
+
+</div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross reference for [Elections Ireland 2016] classes, properties and dataproperties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by [Elections Ireland 2016].
+<div id="objectproperties">
+   <h3 id="properties" class="list">Object Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#/2016/candidate/belongsTo"
+            title="https://www.electionsireland.org/2016/candidate/belongsTo">
+            <span>belongs to</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/candidate/party/belongsTo"
+            title="https://www.electionsireland.org/2016/candidate/party/belongsTo">
+            <span>belongs to</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/candidate/party/hasCandidate"
+            title="https://www.electionsireland.org/2016/candidate/party/hasCandidate">
+            <span>has candidate</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/candidate/hasCountDetails"
+            title="https://www.electionsireland.org/2016/candidate/hasCountDetails">
+            <span>has count details</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/hasElectorate"
+            title="https://www.electionsireland.org/2016/constituency/hasElectorate">
+            <span>has electorate</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/hasQuota"
+            title="https://www.electionsireland.org/2016/constituency/hasQuota">
+            <span>has quota</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/candidate/hasResults"
+            title="https://www.electionsireland.org/2016/candidate/hasResults">
+            <span>has results</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/hasSeats"
+            title="https://www.electionsireland.org/2016/constituency/hasSeats">
+            <span>has seats</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/countdetails/hasVotes"
+            title="https://www.electionsireland.org/2016/countdetails/hasVotes">
+            <span>has votes</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/candidate/isPerson"
+            title="https://www.electionsireland.org/2016/candidate/isPerson">
+            <span>is person</span>
+         </a>
+      </li>
+   </ul>
+   <div class="entity" id="/2016/candidate/belongsTo">
+      <h3>belongs to<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/belongsTo</p>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> transitive</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/candidate">candidate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dd>
+               <a href="#/2016/candidate/party/belongsTo"
+                  title="https://www.electionsireland.org/2016/candidate/party/belongsTo">belongs to</a>
+               <sup class="type-op" title="object property">op</sup> 
+               <span class="logic">min</span> 1 <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/party">party</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/party">party</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/candidate/party/belongsTo">
+      <h3>belongs to<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/party/belongsTo</p>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> transitive</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/candidate">candidate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/party">party</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dd>
+               <a href="#/2016/candidate/belongsTo"
+                  title="https://www.electionsireland.org/2016/candidate/belongsTo">belongs to</a>
+               <sup class="type-op" title="object property">op</sup> 
+               <span class="logic">min</span> 1 <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/constituency">constituency</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/constituency">constituency</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/candidate/party/hasCandidate">
+      <h3>has candidate<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/party/hasCandidate</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/party">party</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/candidate">candidate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/candidate/hasCountDetails">
+      <h3>has count details<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/hasCountDetails</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/candidate">candidate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/countdetails/iterations">iterations</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/hasElectorate">
+      <h3>has electorate<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/hasElectorate</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/constituency">constituency</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/electorate">electorate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/hasQuota">
+      <h3>has quota<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/hasQuota</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/constituency">constituency</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/quota">quota</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/candidate/hasResults">
+      <h3>has results<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/hasResults</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/candidate">candidate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/Result">result</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/hasSeats">
+      <h3>has seats<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/hasSeats</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/constituency">constituency</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dd>
+               <a href="#/2016/constituency/hasSeats"
+                  title="https://www.electionsireland.org/2016/constituency/hasSeats">has seats</a>
+               <sup class="type-op" title="object property">op</sup> 
+               <span class="logic">min</span> 3 <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/seats">seats</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dd>
+               <a href="#/2016/constituency/hasSeats"
+                  title="https://www.electionsireland.org/2016/constituency/hasSeats">has seats</a>
+               <sup class="type-op" title="object property">op</sup> 
+               <span class="logic">max</span> 5 <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/seats">seats</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/seats">seats</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/countdetails/hasVotes">
+      <h3>has votes<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/countdetails/hasVotes</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/countdetails/iterations">iterations</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/countdetails/votes">votes</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/candidate/isPerson">
+      <h3>is person<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/isPerson</p>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> symmetric</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/candidate">candidate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/Person">person</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div id="dataproperties">
+   <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#/2016/candidate/candidateID"
+            title="https://www.electionsireland.org/2016/candidate/candidateID">
+            <span>candidate i d</span>
+         </a>
+      </li>
+      <li>
+         <a href="#https://xmlns.com/foaf/0.1/firstname" title="https://xmlns.com/foaf/0.1/firstname">
+            <span>firstname</span>
+         </a>
+      </li>
+      <li>
+         <a href="#https://xmlns.com/foaf/0.1/gender" title="https://xmlns.com/foaf/0.1/gender">
+            <span>gender</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/hasFinalCountNumber"
+            title="https://www.electionsireland.org/2016/constituency/hasFinalCountNumber">
+            <span>has final count number</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/candidate/result/hasFinalResult"
+            title="https://www.electionsireland.org/2016/candidate/result/hasFinalResult">
+            <span>has final result</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/countdetails/hasIteration"
+            title="https://www.electionsireland.org/2016/countdetails/hasIteration">
+            <span>has iteration</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/countdetails/votes/hasIterationTotalVote"
+            title="https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote">
+            <span>has iteration total vote</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/countdetails/votes/hasIterationVote"
+            title="https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote">
+            <span>has iteration vote</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/candidate/party/hasName"
+            title="https://www.electionsireland.org/2016/candidate/party/hasName">
+            <span>has name</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/hasName"
+            title="https://www.electionsireland.org/2016/constituency/hasName">
+            <span>has name</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/hasNumOfCandidates"
+            title="https://www.electionsireland.org/2016/constituency/hasNumOfCandidates">
+            <span>has num of candidates</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/countdetails/hasOccurredOn"
+            title="https://www.electionsireland.org/2016/countdetails/hasOccurredOn">
+            <span>has occurred on</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/countdetails/hasResult"
+            title="https://www.electionsireland.org/2016/countdetails/hasResult">
+            <span>has result</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/countdetails/votes/hasTransfers"
+            title="https://www.electionsireland.org/2016/countdetails/votes/hasTransfers">
+            <span>has transfers</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/candidate/party/partyAb"
+            title="https://www.electionsireland.org/2016/candidate/party/partyAb">
+            <span>party ab</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/quo/reqToSaveDep"
+            title="https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep">
+            <span>req to save dep</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/seats/seatsFilled"
+            title="https://www.electionsireland.org/2016/constituency/seats/seatsFilled">
+            <span>seats filled</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/electorate/spoiledPoll"
+            title="https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll">
+            <span>spoiled poll</span>
+         </a>
+      </li>
+      <li>
+         <a href="#https://xmlns.com/foaf/0.1/surname" title="https://xmlns.com/foaf/0.1/surname">
+            <span>surname</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/electorate/totalPoll"
+            title="https://www.electionsireland.org/2016/constituency/electorate/totalPoll">
+            <span>total poll</span>
+         </a>
+      </li>
+      <li>
+         <a href="#/2016/constituency/electorate/validPoll"
+            title="https://www.electionsireland.org/2016/constituency/electorate/validPoll">
+            <span>valid poll</span>
+         </a>
+      </li>
+   </ul>
+   <div class="entity" id="/2016/candidate/candidateID">
+      <h3>candidate i d<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/candidateID</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/candidate">candidate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="https://xmlns.com/foaf/0.1/firstname">
+      <h3>firstname<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://xmlns.com/foaf/0.1/firstname</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/Person">person</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="https://xmlns.com/foaf/0.1/gender">
+      <h3>gender<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://xmlns.com/foaf/0.1/gender</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/Person">person</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/hasFinalCountNumber">
+      <h3>has final count number<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/hasFinalCountNumber</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/constituency">constituency</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/candidate/result/hasFinalResult">
+      <h3>has final result<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/result/hasFinalResult</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/Result">result</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/countdetails/hasIteration">
+      <h3>has iteration<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/countdetails/hasIteration</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/countdetails/iterations">iterations</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/countdetails/votes/hasIterationTotalVote">
+      <h3>has iteration total vote<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/countdetails/votes/hasIterationTotalVote</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/countdetails/votes">votes</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/countdetails/votes/hasIterationVote">
+      <h3>has iteration vote<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/countdetails/votes/hasIterationVote</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/countdetails/votes">votes</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/candidate/party/hasName">
+      <h3>has name<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/party/hasName</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/party">party</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/hasName">
+      <h3>has name<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/hasName</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/constituency">constituency</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/hasNumOfCandidates">
+      <h3>has num of candidates<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/hasNumOfCandidates</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/constituency">constituency</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/countdetails/hasOccurredOn">
+      <h3>has occurred on<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/countdetails/hasOccurredOn</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/countdetails/iterations">iterations</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/countdetails/hasResult">
+      <h3>has result<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/countdetails/hasResult</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/countdetails/iterations">iterations</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/countdetails/votes/hasTransfers">
+      <h3>has transfers<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/countdetails/votes/hasTransfers</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/countdetails/votes">votes</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/candidate/party/partyAb">
+      <h3>party ab<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/candidate/party/partyAb</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/party">party</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/quo/reqToSaveDep">
+      <h3>req to save dep<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/quo/reqToSaveDep</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/quota">quota</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/seats/seatsFilled">
+      <h3>seats filled<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/seats/seatsFilled</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/seats">seats</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/electorate/spoiledPoll">
+      <h3>spoiled poll<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/electorate/spoiledPoll</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/electorate">electorate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="https://xmlns.com/foaf/0.1/surname">
+      <h3>surname<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://xmlns.com/foaf/0.1/surname</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/candidate/Person">person</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/electorate/totalPoll">
+      <h3>total poll<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/electorate/totalPoll</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/electorate">electorate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="/2016/constituency/electorate/validPoll">
+      <h3>valid poll<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.electionsireland.org/2016/constituency/electorate/validPoll</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted"
+                     title="https://www.electionsireland.org/2016/constituency/electorate">electorate</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#integer">integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div id="annotationproperties">
+   <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://xmlns.com/foaf/0.1/firstname" title="http://xmlns.com/foaf/0.1/firstname">
+            <span>firstname</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://xmlns.com/foaf/0.1/gender" title="http://xmlns.com/foaf/0.1/gender">
+            <span>gender</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://xmlns.com/foaf/0.1/surname" title="http://xmlns.com/foaf/0.1/surname">
+            <span>surname</span>
+         </a>
+      </li>
+   </ul>
+   <div class="entity" id="http://xmlns.com/foaf/0.1/firstname">
+      <h3>firstname<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://xmlns.com/foaf/0.1/firstname</p>
+   </div>
+   <div class="entity" id="http://xmlns.com/foaf/0.1/gender">
+      <h3>gender<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://xmlns.com/foaf/0.1/gender</p>
+   </div>
+   <div class="entity" id="http://xmlns.com/foaf/0.1/surname">
+      <h3>surname<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://xmlns.com/foaf/0.1/surname</p>
+   </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals
+</div>
+</div>
+</div>
+    
+	
+<div>
+<h2>Sparql Queries</h2>
+<img align="center" width="60%" height ="60%" src="Images/Query1.png"></img> 
+<img align="center" width="60%" height ="60%" src="Images/Query2.png"></img> 
+<img align="center" width="60%" height ="60%" src="Images/Query3.png"></img> 
+<img align="center" width="60%" height ="60%" src="Images/Query4.png"></img> 
+<img align="center" width="60%" height ="60%" src="Images/Query5.png"></img> 
+<img align="center" width="90%" height ="60%" src="Images/Query6.png"></img> 
+<img align="center" width="60%" height ="60%" src="Images/Query7.png"></img> 
+<img align="center" width="60%" height ="60%" src="Images/Query8.png"></img> 
+<img align="center" width="60%" height ="60%" src="Images/Query9.png"></img> 
+<img align="center" width="60%" height ="60%" src="Images/Query10.png"></img> 
+</div>
+<div id="R2RML">
+<h2 id="rml" class="list">R2RML Mapping <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+# Mapping created using Juma editor.<br/>
+  @prefix rr: http://www.w3.org/ns/r2rml# .<br/>
+  @prefix rrf: http://kdeg.scss.tcd.ie/ns/rrf# . <br/>
+    @prefix xsd: http://www.w3.org/2001/XMLSchema# .<br/>
+    @prefix csv: http://example.org/csv/ .<br/>
+    @prefix foaf: http://xmlns.com/foaf/0.1/ .<br/>
+    @prefix rdfs: http://www.w3.org/2000/01/rdf-schema# .<br/>
+    @prefix can: https://www.electionsireland.org/2016/candidate/ .<br/>
+    @prefix par: https://www.electionsireland.org/2016/candidate/party/ .<br/>
+    @prefix res: https://www.electionsireland.org/2016/candidate/result/ .<br/>
+<br/>
+  <#TriplesMap1><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016candidatedetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/candidate/{Constituency Number}_{Candidate Id}";<br/>
+      rr:class can:candidate;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant can:candidateID;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Candidate Id";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant can:belongsTo;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/candidate/party/{PARTY}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant can:hasCountDetails;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/count/{Constituency Number}_{Candidate Id}_{Count Number}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant can:isPerson;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://xmlns.com/foaf/0.1/{First Name}_{SURNAME}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant can:hasResults;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/candidate/{Constituency Number}_{Candidate Id}_{RESULT}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  .<br/>
+<br/>
+  <#TriplesMap2><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016candidatedetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/candidate/party/{PARTY}";<br/>
+      rr:class can:party;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant par:partyAb;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Party Abbreviation";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant par:hasCandidate;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/candidate/{Constituency Number}_{Candidate Id}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant par:hasName;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "PARTY";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant par:belongsTo;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/constituency/{Constituency Number}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  .<br/>
+<br/>
+  <#TriplesMap3><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016candidatedetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://xmlns.com/foaf/0.1/{First Name}_{SURNAME}";<br/>
+      rr:class can:Person;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant foaf:surname;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "SURNAME";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant foaf:firstname;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "First Name";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant foaf:gender;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "GENDER";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  .<br/>
+<br/>
+  <#TriplesMap4><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016candidatedetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/candidate/{Constituency Number}_{Candidate Id}_{RESULT}";<br/>
+      rr:class can:Result;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant res:hasFinalResult;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "RESULT";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  .<br/>
+<br/>
+    @prefix xsd:  http://www.w3.org/2001/XMLSchema# .<br/>
+    @prefix csv:  http://example.org/csv/ .<br/>
+    @prefix foaf: http://xmlns.com/foaf/0.1/ .<br/>
+    @prefix rdfs: http://www.w3.org/2000/01/rdf-schema# .<br/>
+    @prefix con:  https://www.electionsireland.org/2016/constituency/ .<br/>
+    @prefix elec: https://www.electionsireland.org/2016/constituency/electorate/ .<br/>
+    @prefix sea:  https://www.electionsireland.org/2016/constituency/seats/ .<br/>
+    @prefix quo:  https://www.electionsireland.org/2016/constituency/quo/ .<br/>
+<br/>
+  <#TriplesMap5><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016constituencydetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/constituency/{Constituency Number}";<br/>
+      rr:class con:constituency;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant con:hasName;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Constituency Name";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant con:hasNumOfCandidates;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Number Of Candidates";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant con:hasFinalCountNumber;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Count Number";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant con:hasElectorate;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/constituency/electorate/{Total Electorate}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant con:hasSeats;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/constituency/seats/{Seats in Constituency}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant con:hasQuota;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/constituency/quota/{QUOTA}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  .<br/>
+<br/>
+  <#TriplesMap6><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016constituencydetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/constituency/electorate/{Total Electorate}";<br/>
+      rr:class con:electorate;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant elec:totalPoll;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Total Poll";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant elec:validPoll;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Valid Poll";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant elec:spoiledPoll;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "SPOILED";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  .<br/>
+<br/>
+  <#TriplesMap7><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016constituencydetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/constituency/seats/{Seats in Constituency}";<br/>
+      rr:class con:seats;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant sea:seatsFilled;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Seats Filled";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  .<br/>
+<br/>
+  <#TriplesMap8><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016constituencydetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/constituency/quota/{QUOTA}";<br/>
+      rr:class con:quota;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant quo:reqToSaveDep;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Required Save Deposit";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  .<br/>
+<br/>
+    @prefix xsd:  http://www.w3.org/2001/XMLSchema# .<br/>
+    @prefix csv:  http://example.org/csv/ .<br/>
+    @prefix foaf: http://xmlns.com/foaf/0.1/ .<br/>
+    @prefix rdfs: http://www.w3.org/2000/01/rdf-schema# .<br/>
+    @prefix cou:  https://www.electionsireland.org/2016/countdetails/ .<br/>
+    @prefix vot:  https://www.electionsireland.org/2016/countdetails/votes/ .<br/>
+<br/>
+  <#TriplesMap9><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016countdetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/count/{Constituency Number}_{Candidate Id}_{Count Number}";<br/>
+      rr:class cou:iterations;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant cou:hasOccurredOn;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Occurred On Count";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant cou:hasResult;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "RESULT";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant cou:hasVotes;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/count/votes/{Constituency Number}_{Candidate Id}_{Count Number}";<br/>
+      rr:termType rr:IRI;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant cou:hasIteration;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Count Number";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  .<br/>
+<br/>
+  <#TriplesMap10><br/>
+  rr:logicalTable [<br/>
+    rr:tableName "generalelection2016countdetails";<br/>
+  ];<br/>
+<br/>
+   rr:subjectMap [<br/>
+      rr:template "https://www.electionsireland.org/2016/count/votes/{Constituency Number}_{Candidate Id}_{Count Number}";<br/>
+      rr:class cou:votes;<br/>
+   ];<br/>
+<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant vot:hasTransfers;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "TRANSFERS";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant vot:hasIterationTotalVote;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "Total Votes";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+  rr:predicateObjectMap [<br/>
+    rr:predicateMap [<br/>
+      rr:constant vot:hasIterationVote;<br/>
+    ];<br/>
+<br/>
+     rr:objectMap [<br/>
+      rr:column "VOTES";<br/>
+      rr:termType rr:Literal;<br/>
+     ];<br/>
+  ];<br/>
+
+</div>
+   
+
+	
+	
+	
+	
+
+<!--REFERENCES SECTION-->
+<div id="references">
+<h2 id="ref" class="list">References <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+<a href="http://xmlns.com/foaf/spec">http://xmlns.com/foaf/spec</a></span><br/>
+<a href="www.data.gov.ie">www.data.gov.ie</a><br/>
+<a href="https://ukparliament.github.io/ontologies/">https://ukparliament.github.io/ontologies/</a><br/>
+</div>
+
+
+<div id="acknowledgements">
+<h2 id="ack" class="list">Acknowledgements <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>
